@@ -5,18 +5,60 @@
 
 using namespace std;
 
+//template function
+template<typename T, typename T1, typename T2>
+T2 Add(T a, T1 b)
+{
+	return a + b;
+}
+
+//template class
+template<typename T>
+class NumerStore
+{
+public:
+	T Store[100];
+};
+
+//function overloding
+int Add(int A, int B)
+{
+	return A + B;
+}
+
+float Add(float A, float B)
+{
+	return A + B;
+}
+
+
+
 int main()
 {
-	Engine* engine = new Engine();
+	NumerStore<int> IntStore;
+	NumerStore<float> FloatStore;
 
-	engine->SpawnActor();
-	engine->SpawnActor();
+	FloatStore.Store[0] = 10.0f;
+	IntStore.Store[0] = 10;
 
-	engine->DestroyActor(0);
+	int a = 2;
+	int b = 3;
 
-	engine->Run();
+	cout << Add<int, int, int>(a, b) << endl;
+	cout << Add<int, float, float>(2, 3.0f) << endl;
 
-	delete engine;
 
+	//	Engine* engine = new Engine();
+	//
+	//	(*engine).SpawnActor();
+	//	 //Wall, Player, Goal(Object)
+	//	engine->SpawnActor();
+	//
+	////	engine->DestroyActor(0);
+	//
+	//	engine->Run();
+	//
+	//	delete engine;
+	//
 	return 0;
 }

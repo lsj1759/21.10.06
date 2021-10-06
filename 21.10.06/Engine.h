@@ -29,6 +29,9 @@ private:
 	void BeginOverlap();
 
 	vector<Actor*> Actors;
+
+	bool bIsRunning = true;
+	bool bFirstRun = true;
 };
 
 
