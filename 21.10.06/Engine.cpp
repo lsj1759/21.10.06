@@ -7,13 +7,16 @@ Engine::Engine()
 
 Engine::~Engine()
 {
-	for (int i = 0; i < CountOfActors; ++i)
+	//Heap »èÁ¦
+	for (size_t i = 0; i < Actors.size(); ++i)
 	{
-		if (Actors[i] != nullptr)
-		{
-			delete Actors[i];
-		}
+		//if (Actors[i] != nullptr)
+		//{
+		delete Actors[i];
+		//}
 	}
+
+	Actors.clear();
 }
 
 void Engine::Run()
@@ -22,13 +25,13 @@ void Engine::Run()
 
 void Engine::SpawnActor()
 {
-	Actors[CountOfActors++] = new Actor();
+	Actors.push_back(new Actor());
 }
 
 void Engine::DestroyActor(int Index)
 {
 	delete Actors[Index];
-	Actors[Index] = nullptr;
+	Actors.erase(Actors.begin() + Index);
 }
 
 void Engine::Init()

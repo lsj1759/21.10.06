@@ -1,23 +1,36 @@
 #pragma once
+
+
+//STL, C++
+#include <vector>
+
+using namespace std;
+
 class Actor;
 
-class NewEngine
+class Engine
 {
 public:
-	NewEngine();
-	~NewEngine();
+	Engine();
+	~Engine();
 
 	void Run();
 
+	void SpawnActor();
+	void DestroyActor(int Index);
+
 private:
-	void Initialize();
-	void Terminalize();
+	void Init();
+	void Term();
+	void Tick();
 	void BeginPlay();
 	void Input();
-	void Process();
 	void Render();
 	void BeginOverlap();
 
-	Actor* Actors[1000];
+	vector<Actor*> Actors;
 };
+
+
+
 
